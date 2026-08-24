@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PARCEIRO HYPERA — Dashboard Futurista</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- BACKGROUND ANIMADO -->
+  <div class="animated-bg">
+    <div class="gradient-sphere sphere-1"></div>
+    <div class="gradient-sphere sphere-2"></div>
+    <div class="gradient-sphere sphere-3"></div>
+  </div>
+
+  <!-- GRID DE FUNDO -->
+  <div class="grid-background"></div>
+
+  <!-- CAPA FUTURISTA -->
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-content">
+      <div class="logo-animated">
+        <div class="logo-cube">
+          <div class="cube-face">📊</div>
+        </div>
+      </div>
+      <h1 class="splash-title">PARCEIRO HYPERA</h1>
+      <p class="splash-subtitle">Executive Intelligence Dashboard</p>
+      <p class="splash-desc">Análise de Vendas, Positivações & Performance Comercial</p>
+
+      <div class="tech-badge">
+        <span class="badge-dot"></span>
+        <span>Real-time Analytics • AI-Powered Insights</span>
+      </div>
+
+      <button class="btn-enter" onclick="enterDashboard()">
+        <span class="btn-text">Acessar Dashboard</span>
+        <span class="btn-arrow">→</span>
+      </button>
+
+      <div class="splash-footer">
+        <p>Junho–Agosto 2026 | 6.552 POS | R$ 8,47M Faturamento</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD MAIN -->
+  <div class="dashboard-wrapper" id="dashboardWrapper">
+    <!-- HEADER FLUTUANTE -->
+    <header class="header-top">
+      <div class="header-left">
+        <h1 class="logo-text">HYPERA</h1>
+        <div class="header-status">
+          <span class="status-dot"></span>
+          <span>Dashboard Ativo</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="header-date" id="currentDate"></span>
+      </div>
+    </header>
+
+    <!-- PAINEL PRINCIPAL -->
+    <main class="dashboard-main">
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h2>Análise <span class="gradient-text">Estratégica</span> do PARCEIRO HYPERA</h2>
+            <p>Período: Junho–Agosto 2026 | Consolidação: PED=NÃO + PED=SIM</p>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-label">Faturamento</span>
+              <span class="stat-value">R$ 8,47M</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Positivações</span>
+              <span class="stat-value">6.552 POS</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Clientes</span>
+              <span class="stat-value"><span class="green">1.515</span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SISTEMA DE ABAS MODERNO -->
+      <div class="tabs-system">
+        <div class="tabs-header">
+          <button class="tab-btn active" onclick="switchView('overview')">
+            <span class="tab-icon">📊</span>
+            <span class="tab-name">Overview</span>
+          </button>
+          <button class="tab-btn" onclick="switchView('regional')">
+            <span class="tab-icon">🗺️</span>
+            <span class="tab-name">Regional</span>
+          </button>
+          <button class="tab-btn" onclick="switchView('vendedores')">
+            <span class="tab-icon">👥</span>
+            <span class="tab-name">Vendedores</span>
+          </button>
+          <button class="tab-btn" onclick="switchView('insights')">
+            <span class="tab-icon">💡</span>
+            <span class="tab-name">Insights</span>
+          </button>
+        </div>
+
+        <!-- FILTROS INTEGRADOS ELEGANTES -->
+        <div class="smart-filters">
+          <div class="filter-chip" onclick="toggleFilter(this, 'ped')">
+            <span class="chip-icon">📋</span>
+            <span class="chip-text">Painel PED</span>
+            <span class="chip-badge">3</span>
+          </div>
+          <div class="filter-chip" onclick="toggleFilter(this, 'regional')">
+            <span class="chip-icon">🏢</span>
+            <span class="chip-text">Regional</span>
+            <span class="chip-badge">5</span>
+          </div>
+          <div class="filter-chip" onclick="toggleFilter(this, 'metrica')">
+            <span class="chip-icon">📈</span>
+            <span class="chip-text">Métrica</span>
+            <span class="chip-badge">3</span>
+          </div>
+        </div>
+
+        <!-- CONTEÚDO DAS ABAS -->
+        <!-- OVERVIEW -->
+        <div class="tab-content active" id="view-overview">
+          <div class="kpi-matrix">
+            <div class="kpi-card glowing">
+              <div class="kpi-icon">💰</div>
+              <div class="kpi-info">
+                <span class="kpi-label">Faturamento PED=NÃO</span>
+                <span class="kpi-value">R$ 7,89M</span>
+                <span class="kpi-meta">93% do total</span>
+              </div>
+            </div>
+            <div class="kpi-card glowing">
+              <div class="kpi-icon">⭐</div>
+              <div class="kpi-info">
+                <span class="kpi-label">Positivações Total</span>
+                <span class="kpi-value">6.552 POS</span>
+                <span class="kpi-meta">Jun/Jul/Ago</span>
+              </div>
+            </div>
+            <div class="kpi-card glowing">
+              <div class="kpi-icon">📦</div>
+              <div class="kpi-info">
+                <span class="kpi-label">Top Fabricante</span>
+                <span class="kpi-value">HYPERA S.A.</span>
+                <span class="kpi-meta">R$ 4,23M</span>
+              </div>
+            </div>
+            <div class="kpi-card glowing">
+              <div class="kpi-icon">👥</div>
+              <div class="kpi-info">
+                <span class="kpi-label">Clientes Total</span>
+                <span class="kpi-value">1.515</span>
+                <span class="kpi-meta">Base ativa</span>
+              </div>
+            </div>
+            <div class="kpi-card glowing">
+              <div class="kpi-icon">📊</div>
+              <div class="kpi-info">
+                <span class="kpi-label">Faturamento PED=SIM</span>
+                <span class="kpi-value">R$ 577K</span>
+                <span class="kpi-meta">1.047 POS</span>
+              </div>
+            </div>
+            <div class="kpi-card glowing">
+              <div class="kpi-icon">🎯</div>
+              <div class="kpi-info">
+                <span class="kpi-label">Total Consolidado</span>
+                <span class="kpi-value">R$ 8,47M</span>
+                <span class="kpi-meta">6.552 POS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CRESCIMENTO 3 MESES -->
+          <div class="chart-section">
+            <div class="section-header">
+              <h3>Crescimento Exponencial: Últimos 3 Meses</h3>
+              <span class="trend-badge">📈 +987% Crescimento Total</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="growthChart"></canvas>
+            </div>
+            <div class="insights-row">
+              <div class="insight-mini">
+                <strong>Maio:</strong> R$ 23K | 20 POS — Base estabelecida
+              </div>
+              <div class="insight-mini">
+                <strong>Junho:</strong> R$ 135K | 120 POS — Aceleração +484%
+              </div>
+              <div class="insight-mini">
+                <strong>Julho:</strong> R$ 962K | 783 POS — Explosão +612%
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- REGIONAL -->
+        <div class="tab-content" id="view-regional">
+          <div class="chart-section">
+            <div class="section-header">
+              <h3>Performance por Regional</h3>
+              <span class="info-badge">LUCILENE lidera com 77,14%</span>
+            </div>
+
+            <div class="regional-grid">
+              <div class="regional-card rank-1">
+                <div class="rank-badge">1º</div>
+                <div class="regional-name">LUCILENE<br><small>REG I SPI/SPC</small></div>
+                <div class="regional-stats">
+                  <div class="stat">
+                    <span class="val">3.864</span>
+                    <span class="label">NÃO</span>
+                  </div>
+                  <div class="stat">
+                    <span class="val">669</span>
+                    <span class="label">SIM</span>
+                  </div>
+                  <div class="stat highlight">
+                    <span class="val">4.533</span>
+                    <span class="label">TOTAL</span>
+                  </div>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 69%"></div>
+                </div>
+              </div>
+
+              <div class="regional-card rank-2">
+                <div class="rank-badge">2º</div>
+                <div class="regional-name">ALBERTO<br><small>REG SUL</small></div>
+                <div class="regional-stats">
+                  <div class="stat"><span class="val">639</span><span class="label">NÃO</span></div>
+                  <div class="stat"><span class="val">42</span><span class="label">SIM</span></div>
+                  <div class="stat highlight"><span class="val">681</span><span class="label">TOTAL</span></div>
+                </div>
+                <div class="alert-badge">⚠️ Crescimento +6%</div>
+              </div>
+
+              <div class="regional-card rank-3">
+                <div class="rank-badge">3º</div>
+                <div class="regional-name">KRIS<br><small>REG IV RJ</small></div>
+                <div class="regional-stats">
+                  <div class="stat"><span class="val">444</span><span class="label">NÃO</span></div>
+                  <div class="stat"><span class="val">78</span><span class="label">SIM</span></div>
+                  <div class="stat highlight"><span class="val">522</span><span class="label">TOTAL</span></div>
+                </div>
+              </div>
+
+              <div class="regional-card rank-4">
+                <div class="rank-badge">4º</div>
+                <div class="regional-name">ROSA<br><small>REG II GO/DF</small></div>
+                <div class="regional-stats">
+                  <div class="stat"><span class="val">261</span><span class="label">NÃO</span></div>
+                  <div class="stat"><span class="val">138</span><span class="label">SIM</span></div>
+                  <div class="stat highlight"><span class="val">399</span><span class="label">TOTAL</span></div>
+                </div>
+                <div class="alert-badge">⭐ 34,6% SIM</div>
+              </div>
+
+              <div class="regional-card rank-5">
+                <div class="rank-badge">5º</div>
+                <div class="regional-name">JOSEANE<br><small>COORD TLV/OL</small></div>
+                <div class="regional-stats">
+                  <div class="stat"><span class="val">279</span><span class="label">NÃO</span></div>
+                  <div class="stat"><span class="val">120</span><span class="label">SIM</span></div>
+                  <div class="stat highlight"><span class="val">399</span><span class="label">TOTAL</span></div>
+                </div>
+                <div class="alert-badge">⭐ 30,1% SIM</div>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <canvas id="regionalChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- VENDEDORES -->
+        <div class="tab-content" id="view-vendedores">
+          <div class="chart-section">
+            <div class="section-header">
+              <h3>Top 10 Vendedores por Positivações</h3>
+              <span class="info-badge">MATHEUS AZEVEDO: 527 POS</span>
+            </div>
+
+            <div class="ranking-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="rank">#</th>
+                    <th class="name">Vendedor</th>
+                    <th class="regional">Regional</th>
+                    <th class="value">POS</th>
+                    <th class="status">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="rank-row-1">
+                    <td class="rank">🥇</td>
+                    <td class="name"><strong>MATHEUS AZEVEDO</strong></td>
+                    <td class="regional">LUCILENE</td>
+                    <td class="value"><span class="badge-gold">527</span></td>
+                    <td class="status">⭐⭐⭐⭐⭐</td>
+                  </tr>
+                  <tr class="rank-row-2">
+                    <td class="rank">🥈</td>
+                    <td class="name"><strong>RAFAEL VENCESLAU</strong></td>
+                    <td class="regional">LUCILENE</td>
+                    <td class="value"><span class="badge-silver">127</span></td>
+                    <td class="status">⭐⭐⭐⭐</td>
+                  </tr>
+                  <tr class="rank-row-3">
+                    <td class="rank">🥉</td>
+                    <td class="name"><strong>LUCAS - MC PJ</strong></td>
+                    <td class="regional">LUCILENE</td>
+                    <td class="value"><span class="badge-bronze">135</span></td>
+                    <td class="status">⭐⭐⭐⭐</td>
+                  </tr>
+                  <tr>
+                    <td class="rank">4</td>
+                    <td class="name">LAPINI - MC SPI</td>
+                    <td class="regional">LUCILENE</td>
+                    <td class="value">135</td>
+                    <td class="status">⭐⭐⭐⭐</td>
+                  </tr>
+                  <tr>
+                    <td class="rank">5</td>
+                    <td class="name">JOSÉ GONÇALVES</td>
+                    <td class="regional">LUCILENE</td>
+                    <td class="value">76</td>
+                    <td class="status">⭐⭐⭐</td>
+                  </tr>
+                  <tr>
+                    <td class="rank">6</td>
+                    <td class="name">MOIRA BORIN - MC SP</td>
+                    <td class="regional">LUCILENE</td>
+                    <td class="value">105</td>
+                    <td class="status">⭐⭐⭐</td>
+                  </tr>
+                  <tr>
+                    <td class="rank">7</td>
+                    <td class="name">LILIAN MONSALVES</td>
+                    <td class="regional">LUCILENE</td>
+                    <td class="value">103</td>
+                    <td class="status">⭐⭐⭐</td>
+                  </tr>
+                  <tr>
+                    <td class="rank">8</td>
+                    <td class="name">OTHON SILVA</td>
+                    <td class="regional">LUCILENE</td>
+                    <td class="value">97</td>
+                    <td class="status">⭐⭐⭐</td>
+                  </tr>
+                  <tr>
+                    <td class="rank">9</td>
+                    <td class="name">PRISCILA COSTA</td>
+                    <td class="regional">LUCILENE</td>
+                    <td class="value">74</td>
+                    <td class="status">⭐⭐⭐</td>
+                  </tr>
+                  <tr>
+                    <td class="rank">10</td>
+                    <td class="name">LUCIO NUNES</td>
+                    <td class="regional">ALBERTO</td>
+                    <td class="value">41</td>
+                    <td class="status">⭐⭐</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="chart-container">
+              <canvas id="posChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- INSIGHTS -->
+        <div class="tab-content" id="view-insights">
+          <div class="insights-section">
+            <div class="section-header">
+              <h3>Análise Estratégica & Recomendações</h3>
+              <span class="info-badge">6 Insights Críticos</span>
+            </div>
+
+            <div class="insights-matrix">
+              <div class="insight-card priority-1">
+                <div class="insight-icon">🎯</div>
+                <div class="insight-body">
+                  <h4>Oportunidade Imediata</h4>
+                  <p>ALBERTO registra 83 POS em PED=NÃO mas apenas 3 em PED=SIM (potencial 2.700%). Replicar playbook de LUCILENE poderia gerar +240 POS adicionais em 30 dias.</p>
+                </div>
+              </div>
+
+              <div class="insight-card priority-2">
+                <div class="insight-icon">📊</div>
+                <div class="insight-body">
+                  <h4>Concentração de Risco</h4>
+                  <p>LUCILENE domina 77,14% do volume total. Diversificar ROSA (6,81%) e KRIS (2,54%) reduz risco operacional e aumenta resiliência comercial.</p>
+                </div>
+              </div>
+
+              <div class="insight-card priority-1">
+                <div class="insight-icon">⚡</div>
+                <div class="insight-body">
+                  <h4>Modelo de Sucesso</h4>
+                  <p>MATHEUS AZEVEDO (527 POS) prova que volume de clientes com conversão eficiente é mais lucrativo que grandes contas com baixa ativação.</p>
+                </div>
+              </div>
+
+              <div class="insight-card priority-2">
+                <div class="insight-icon">🔄</div>
+                <div class="insight-body">
+                  <h4>Ciclo de Crescimento</h4>
+                  <p>Padrão claro de aceleração (mai 23K → jun 135K → jul 962K). Sustentar ritmo em Q3/Q4 requer expansão de vendedores e treinamento intensivo.</p>
+                </div>
+              </div>
+
+              <div class="insight-card priority-3">
+                <div class="insight-icon">🔴</div>
+                <div class="insight-body">
+                  <h4>Alerta Crítico: KRIS</h4>
+                  <p>RJ com apenas 25 POS (2,54%) está significativamente abaixo do potencial. Diagnóstico de mercado e recalibração de estratégia são urgentes.</p>
+                </div>
+              </div>
+
+              <div class="insight-card priority-2">
+                <div class="insight-icon">✅</div>
+                <div class="insight-body">
+                  <h4>Quick Win</h4>
+                  <p>Implementar programa de replicação de best practices de LUCILENE → ROSA/KRIS/ALBERTO poderia gerar +350 POS em 30 dias sem investimento.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER MODERNO -->
+    <footer class="dashboard-footer">
+      <div class="footer-content">
+        <div class="footer-left">
+          <span class="footer-brand">PARCEIRO HYPERA</span>
+          <span class="footer-period">Maio–Julho 2026</span>
+        </div>
+        <div class="footer-center">
+          <span class="data-point">6.552 POS</span>
+          <span class="separator">•</span>
+          <span class="data-point">R$ 8,47M Faturamento</span>
+          <span class="separator">•</span>
+          <span class="data-point">1.515 Clientes</span>
+        </div>
+        <div class="footer-right">
+          <span class="footer-version">Dashboard v2.0 — Futuristic Design</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
